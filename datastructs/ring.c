@@ -24,16 +24,15 @@ struct ring
    if there is not enough memory to create. */
 struct ring* ring_create(int size)
 {
-	if (size <= 0)  return NULL;
-	
+	if (size <= 0){
+		return NULL;
+	}
 	struct ring *rb=(struct ring*)malloc(sizeof(struct ring));
 	rb->push = 0;
 	rb->pop = 0;
 	rb->size = size;
 	rb->count = 0;
-	
 	rb->buffer = (int*)malloc(size*sizeof(int));
-	
 	return rb;
 };
 
@@ -42,8 +41,9 @@ struct ring* ring_create(int size)
 */
 int ring_push(struct ring *rb, int* data)
 { 
-	if(rb->count>=rb->size)
+	if(rb->count>=rb->size){
 		return -1;
+	}
 	else
 	{
 		rb->buffer[rb->push]=*data;
@@ -51,7 +51,6 @@ int ring_push(struct ring *rb, int* data)
 		rb->push=(rb->push+1)%rb->size;
 		return 0;
 	}
-	
 }
 
 /* Remove an entry from the ring.
@@ -62,16 +61,15 @@ int ring_push(struct ring *rb, int* data)
 int* ring_pop(struct ring *rb)
 {	
 	int *data;
-	if(rb->count <= 0)
+	if(rb->count <= 0){
 		return NULL;
-	else{	
+	}
 	data=&rb->buffer[rb->pop];
 //	memcpy(data, rb->buffer+rb->pop*sizeof(int), sizeof(int));
 	rb->count=rb->count - 1;	
 	rb->pop=(rb->pop+1)%rb->size;
 
 	return data;
-	}
 }
 
 #endif
