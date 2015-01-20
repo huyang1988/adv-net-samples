@@ -65,7 +65,7 @@ int* ring_pop(struct ring *rb)
 	if(rb->count <= 0)
 		return NULL;
 	else{	
-	data=&rb->buffer[+rb->pop];
+	data=&rb->buffer[rb->pop];
 //	memcpy(data, rb->buffer+rb->pop*sizeof(int), sizeof(int));
 	rb->count=rb->count - 1;	
 	rb->pop=(rb->pop+1)%rb->size;
