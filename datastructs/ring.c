@@ -46,7 +46,7 @@ int ring_push(struct ring *rb, int* data)
 		return -1;
 	else
 	{
-		*((rb->buffer)+rb->push)=*data;
+		rb->buffer[rb->push]=*data;
 		rb->count=rb->count + 1;
 		rb->push=(rb->push+1)%rb->size;
 		return 0;
