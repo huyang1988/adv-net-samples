@@ -33,6 +33,9 @@ struct ring* ring_create(int size)
 	rb->size = size;
 	rb->count = 0;
 	rb->buffer = (int*)malloc(size*sizeof(int));
+	if(rb->buffer==NULL){
+		return NULL;//no enough memory to allocate, return 0
+	}
 	return rb;
 };
 
