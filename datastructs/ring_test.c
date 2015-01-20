@@ -5,6 +5,10 @@
 int main()
 {
     struct ring* rb = ring_create(16);
+    if(rb==NULL){
+    	printf("Fail to create a ring buffer\n");
+    	return -1;
+    }
 
     int data[20];
     int *popdata;
