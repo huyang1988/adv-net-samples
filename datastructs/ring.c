@@ -44,13 +44,10 @@ int ring_push(struct ring *rb, int* data)
 	if(rb->count>=rb->size){
 		return -1;
 	}
-	else
-	{
-		rb->buffer[rb->push]=*data;
-		rb->count=rb->count + 1;
-		rb->push=(rb->push+1)%rb->size;
-		return 0;
-	}
+	rb->buffer[rb->push]=*data;
+	rb->count=rb->count + 1;
+	rb->push=(rb->push+1)%rb->size;
+	return 0;
 }
 
 /* Remove an entry from the ring.
